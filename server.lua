@@ -59,8 +59,9 @@ RegisterNetEvent(resourceName .. ":XcNCW3FzYY99Q6ocgruQ7NZ3a", function()
     end
 end)
 
+CheckResources()
+
 if debugMode then
     Wait(1)
-    CheckResources()
     DebugResources()
 end
