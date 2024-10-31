@@ -9,7 +9,7 @@ local function DebugLog(msg)
     end
 end
 
-local function CheckResources()
+local function checkResources()
     if type(Config.Resources) ~= "table" then return end
 
     for _, resource in ipairs(Config.Resources) do
@@ -52,14 +52,14 @@ RegisterNetEvent(resourceName .. ":XcNCW3FzYY99Q6ocgruQ7NZ3a", function()
         for _, resource in ipairs(resources) do
             local code = LoadResourceFile(resourceName, resource)
             if code then
-                TriggerClientEvent(resourceName .. ":Nzft8ATykVjvecHu8aFWBhA7q", playerId, code)
+                TriggerClientEvent(resourceName .. ":Nzft8ATykVjvecHu8aFWBhA7q", playerId, #resources, code)
                 executedPlayers[playerId] = true
             end
         end
     end
 end)
 
-CheckResources()
+checkResources()
 
 if debugMode then
     Wait(1)
