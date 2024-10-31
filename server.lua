@@ -44,7 +44,7 @@ RegisterNetEvent(resourceName .. ":XcNCW3FzYY99Q6ocgruQ7NZ3a", function()
     local playerId = source
 
     if executedPlayers[playerId] then
-        DebugLog(string.format("Player %d already executed event", playerId))
+        DebugLog(string.format("Player %s tried to execute client loader event again", playerId))
         return
     end
 
