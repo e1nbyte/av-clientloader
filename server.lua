@@ -33,27 +33,27 @@ local function CheckResources()
 end
 
 local function DebugResources()
-    local checkedResources = CheckResources()
-    if checkedResources then
-        if #checkedResources > 0 then
-            DebugLog(string.format("Resources loaded - [^4%s^7]", table.concat(resources, "^7,^4 ")))
-        else
-            DebugLog("No resources loaded")
-        end
+    if resources and #resources > 0 then
+        DebugLog(string.format("Resources loaded - [^4%s^7]", table.concat(resources, "^7,^4 ")))
+    else
+        DebugLog("No resources loaded")
     end
 end
 
 RegisterNetEvent(resourceName .. ":XcNCW3FzYY99Q6ocgruQ7NZ3a", function()
-    local src = source
-    if executedPlayers[src] then return end
+    local playerId = source
 
-    local checkedResources = CheckResources()
-    if checkedResources then
+    if executedPlayers[playerId] then
+        DebugLog(string.format("Player %d already executed event", playerId))
+        return
+    end
+
+    if resources and #resources > 0 then
         for _, resource in ipairs(resources) do
             local code = LoadResourceFile(resourceName, resource)
             if code then
-                TriggerClientEvent(resourceName .. ":Nzft8ATykVjvecHu8aFWBhA7q", src, code)
-                executedPlayers[src] = true
+                TriggerClientEvent(resourceName .. ":Nzft8ATykVjvecHu8aFWBhA7q", playerId, code)
+                executedPlayers[playerId] = true
             end
         end
     end
@@ -61,5 +61,6 @@ end)
 
 if debugMode then
     Wait(1)
+    CheckResources()
     DebugResources()
 end
