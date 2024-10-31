@@ -4,6 +4,7 @@ local resourceName = GetCurrentResourceName()
 local debugMode = Config.debugMode or false
 
 local function DebugLog(msg)
+    Wait(1)
     if debugMode and msg then
         print(string.format("^7(^5!^7) [^5DEBUG^7] ^2>>^7 %s", msg))
     end
@@ -62,6 +63,5 @@ end)
 checkResources()
 
 if debugMode then
-    Wait(1)
     DebugResources()
 end
