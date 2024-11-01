@@ -10,7 +10,7 @@ local function DebugLog(msg)
     end
 end
 
-local function checkResources()
+local function loadResources()
     if type(Config.Resources) ~= "table" then return end
 
     for _, resource in ipairs(Config.Resources) do
@@ -60,7 +60,7 @@ RegisterNetEvent(resourceName .. ":XcNCW3FzYY99Q6ocgruQ7NZ3a", function()
     end
 end)
 
-checkResources()
+loadResources()
 
 if debugMode then
     DebugResources()
