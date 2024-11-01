@@ -1,7 +1,7 @@
 local executedPlayers = {}
 local resources = {}
 local resourceName = GetCurrentResourceName()
-local debugMode = Config.debugMode or false
+local debugMode = Config.debugMode or true
 
 local function DebugLog(msg)
     Wait(1)
@@ -29,8 +29,6 @@ local function loadResources()
             DebugLog(string.format("Error loading file - [^4%s^7]", resource))
         end
     end
-
-    return resources
 end
 
 local function DebugResources()
